@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'restaurants', to: 'restaurants#index'
+  post 'restaurants', to: 'restaurants#create'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # A visitor can add a new review to a restaurant" user story
+  # ==> Adding the nested routes to routes.rb:
+  resources :restaurants do
+    resources :reviews, only: [:new, :create]
+  end
 end
+
+
+
